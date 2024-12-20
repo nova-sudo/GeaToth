@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face{
+  font-family: aqem;
+  src: url(../fonts/aqem.ttf);
+}
+@font-face{
+  font-family: flore;
+  src: url(../fonts/flore.otf);
+}
+@font-face{
+  font-family: darling;
+  src: url(../fonts/Darling.ttf);
+}
+@font-face{
+  font-family: monogram;
+  src: url(../fonts/monogram.ttf);
+}
+@font-face{
+  font-family: wildly;
+  src: url(../fonts/wildly.otf);
+}
+@font-face{
+  font-family: Pixel;
+  src: url(../fonts/Pixel.ttf);
+}
+.FlexContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 65%;
+  background-color: #2f1d58;
+  height: 80vh;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.FlexContainer div {
+  width: 400px;
+  height: 100px;
+  margin: 5px;
+  background-color: lightblue;
+}
