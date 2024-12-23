@@ -5,7 +5,6 @@ import { IoFingerPrintOutline } from "react-icons/io5";
 export default function LandingPage() {
     return (
       <div className="h-screen w-full relative">
-        <h1 className="p-5 absolute text-6xl text-white  font-pixel font-bold z-10 animate-pulse">GEAtoth</h1>
     
         <div className="h-screen w-full flex justify-center items-center">
           <Link to="/registration">
@@ -20,7 +19,7 @@ export default function LandingPage() {
           </Link>
           
           <iframe 
-            src='https://my.spline.design/arcslightbeamsandagianthand-b77419332b6ff4aa19b833544226afdd/' 
+            src='https://my.spline.design/animatedshapeblend-521b7666150587eac6e2ab105024816c/' 
             frameBorder='0' 
             width='100%' 
             height='100%' 
