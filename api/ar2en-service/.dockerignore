@@ -1,0 +1,44 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+.env
+
+# Ignore build, log, and cache files
+build/
+dist/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore large data files (if applicable)
+data/
+*.csv
+*.zip
+*.tar.gz
+*.json
+*.xml
+
+# Ignore node_modules (if using Node.js as well)
+node_modules/
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+
+# Ignore package manager lock files (optional)
+package-lock.json
+yarn.lock
+
+# Ignore temporary files created by editors
+*.sublime-workspace
+*.sublime-project
+
+# Ignore Docker-related files that are not needed
+.dockerignore
+Dockerfile

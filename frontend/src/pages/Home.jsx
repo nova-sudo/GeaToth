@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
    return (
-    <div className="h-screen w-full flex items-center justify-center bg-gray-100">
+    <div className="h-screen w-full flex items-center justify-center ">
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
       {/* Card for Translate */}
       <div
