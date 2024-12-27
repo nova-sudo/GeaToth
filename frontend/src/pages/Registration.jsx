@@ -8,7 +8,7 @@ export default function Registration() {
 
     const handleRegister = async () => {
       try {
-          const response = await fetch("http://localhost:3030/", {
+          const response = await fetch("http://localhost:3030/register", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ email, password }),
