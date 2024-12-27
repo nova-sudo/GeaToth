@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Enable CORS for all routes and origins (you can adjust origins if needed)
 CORS(app, origins="http://localhost:3000")  # Only allow localhost:3000 (React app)
 
-USER_SERVICE_URL = "http://localhost:3000"
+USER_SERVICE_URL = "http://localhost:3030"
 
 @app.route("/translate/ar2en", methods=["POST"])
 def translate_ar2en():
