@@ -30,6 +30,6 @@ app.use((req, res, next) => {
 });
 
 // Start the server
-app.listen(3000, () => {
+app.listen(3030, () => {
     console.log("User-Service running on http://localhost:3030");
 });
