@@ -13,7 +13,7 @@ const SummarizerPage = () => {
     setSummary("");
 
     try {
-      const response = await axios.post("http://localhost:8003/summarize", {
+      const response = await axios.post("http://localhost:8004/summarize", {
         text: inputText,
       });
       setSummary(response.data.summary);
