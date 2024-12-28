@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
-
+//registration page
 export default function Registration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
