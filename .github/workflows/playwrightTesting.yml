@@ -4,19 +4,21 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
+    # Set up Node.js for frontend
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - name: Navigate to frontend directory
-      run: |
-        cd frontend && ls -la # Adjust path to correct directory name
-    - name: Install dependencies
+      
+    # Install frontend dependencies
+    - name: Install frontend dependencies
       working-directory: frontend
       run: |
         if [ -f package-lock.json ]; then
@@ -24,12 +26,66 @@ jobs:
         else
           npm install
         fi
+
+    # Install Playwright Browsers
     - name: Install Playwright Browsers
       working-directory: frontend
       run: npx playwright install --with-deps
+
+    # Install backend dependencies for each service
+    - name: Install backend dependencies for en2ar-service
+      working-directory: api/en2ar-service
+      run: |
+        # Install dependencies if any (e.g., pip install -r requirements.txt if there are Python dependencies)
+        pip install -r requirements.txt || echo "No requirements file found"
+
+    - name: Install backend dependencies for ar2en-service
+      working-directory: api/ar2en-service
+      run: |
+        pip install -r requirements.txt || echo "No requirements file found"
+
+    - name: Install backend dependencies for summarizer-agent
+      working-directory: api/summarizer-agent
+      run: |
+        pip install -r requirements.txt || echo "No requirements file found"
+
+    - name: Install backend dependencies for the backend Node.js app
+      working-directory: backend
+      run: |
+        npm install
+
+    # Start the backend services
+    - name: Start en2ar-service
+      working-directory: api/en2ar-service
+      run: nohup python main.py &
+
+    - name: Start ar2en-service
+      working-directory: api/ar2en-service
+      run: nohup python main.py &
+
+    - name: Start summarizer-agent
+      working-directory: api/summarizer-agent
+      run: nohup python main.py &
+
+    - name: Start backend Node.js app
+      working-directory: backend
+      run: nohup npx nodemon index.js &
+
+    # Start the frontend application
+    - name: Start the Application
+      working-directory: frontend
+      run: npm start &
+
+    # Wait for the application to be ready
+    - name: Wait for the Application to be Ready
+      run: npx wait-on http://localhost:3000
+
+    # Run Playwright tests
     - name: Run Playwright tests
       working-directory: frontend
       run: npx playwright test
+
+    # Upload Playwright test results
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
