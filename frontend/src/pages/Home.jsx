@@ -15,6 +15,7 @@ export default function Home() {
        
       </div>
 
+
       {/* Card for Summarize */}
       <div
         className="cursor-pointer ring-2 ring-inset ring-gray-400 text-gray-400 hover:ring-black hover:text-black w-full bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition-shadow"
