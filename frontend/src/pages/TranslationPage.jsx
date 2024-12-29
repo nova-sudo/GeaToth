@@ -38,7 +38,8 @@ const TranslationPage = () => {
               Arabic to English
             </button>
           </div>
-  
+   
+   
           <textarea
             className="w-full p-4 mb-4 border border-gray-300 rounded-3xl"
             rows="6"
