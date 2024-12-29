@@ -19,10 +19,19 @@ def translate_en2ar():
 
     translation_id = str(uuid.uuid4())
     try:
-        # Translate text
+        # ترجمة النص
         translated_text = translate_en_to_ar(data["text"])
         
-        return jsonify({ "translated_text": translated_text})
+        # إرسال سجل العملية إلى user-service
+        log_data = {
+            "user_id": translation_id,
+            "action": "Translation from English to Arabic completed"
+        }
+        log_response = requests.post(f"{USER_SERVICE_URL}/auth/logs", json=log_data)
+        if log_response.status_code != 201:
+            return jsonify({"error": "Failed to log the translation action"}), 500
+
+        return jsonify({"id": translation_id, "translated_text": translated_text})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
