@@ -37,8 +37,10 @@ const SummarizerPage = () => {
           placeholder="Enter text to summarize..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          data-testid="source"
         />
         <button
+        data-testid="button"
           onClick={handleSummarize}
           disabled={loading || !inputText.trim()}
           className={`w-full px-4 py-2 mt-4 text-white rounded-lg ${
@@ -52,8 +54,8 @@ const SummarizerPage = () => {
         {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
         {summary && (
           <div className="p-4 mt-6 bg-gray-100 border rounded-lg">
-            <h2 className="text-lg font-semibold text-gray-800">Summary:</h2>
-            <p className="mt-2 text-gray-700">{summary}</p>
+            <h2 className="text-lg font-semibold text-gray-800" data-testid="summarized">Summary:</h2>
+            <p className="mt-2 text-gray-700" >{summary}</p>
           </div>
         )}
       </div>

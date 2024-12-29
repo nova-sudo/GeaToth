@@ -41,6 +41,7 @@ export default function Registration() {
                     </label>
                     <input
                         type="email"
+                        data-testid="email"
                         className="w-72 text-lg rounded-lg ring-1 ring-black h-10 px-2 font-pixel text-black"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -50,6 +51,7 @@ export default function Registration() {
                     </label>
                     <input
                         type="password"
+                        data-testid="password"
                         className="w-72 rounded-lg text-3xl h-10 px-2 ring-1 ring-black font-pixel text-black"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -58,7 +60,7 @@ export default function Registration() {
                         onClick={handleRegister}
                         className="mt-10 text-center text-6xl animate-pulse ml-28 hover:text-7xl hover:ml-[105px]"
                     >
-                        <IoFingerPrintOutline />
+                        <IoFingerPrintOutline  data-testid="reglog" />
                     </button>
                 </div>
             </section>

@@ -28,12 +28,14 @@ const TranslationPage = () => {
             <button
               className={`px-4 rounded-full py-2 ${language === 'en2ar' ? 'bg-blue-300 ring-2 ring-blue-700 text-blue-900' : 'bg-gray-200 ring-1 ring-gray-600 text-gray-900'}`}
               onClick={() => setLanguage('en2ar')}
+              data-testid="en2arButton"
             >
               English to Arabic
             </button>
             <button
               className={`px-4 py-2 rounded-full ${language === 'ar2en' ? 'bg-blue-300 ring-2 ring-blue-700 text-blue-900' : 'bg-gray-200 ring-1 ring-gray-600 text-gray-900'}`}
               onClick={() => setLanguage('ar2en')}
+              data-testid="ar2enButton"
             >
               Arabic to English
             </button>
@@ -46,11 +48,13 @@ const TranslationPage = () => {
             placeholder="Enter text to translate"
             value={sourceText}
             onChange={(e) => setSourceText(e.target.value)}
+            data-testid="source"
           />
   
           <button
             onClick={handleTranslate}
-            className="w-full bg-red-200 ring-2 ring-red-600 rounded-full text-red-900 py-2 "
+            className="w-full bg-red-200 ring-2 ring-red-600 rounded-full text-red-900 py-2 hover:bg-red-300 transition-colors"
+            data-testid="button"
           >
             Translate
           </button>
@@ -61,6 +65,7 @@ const TranslationPage = () => {
             placeholder="Translated text"
             value={translatedText}
             readOnly
+            data-testid="translated"
           />
         </div>
       </div>
