@@ -36,7 +36,6 @@ jobs:
     - name: Install backend dependencies for en2ar-service
       working-directory: api/en2ar-service
       run: |
-        # Install dependencies if any (e.g., pip install -r requirements.txt if there are Python dependencies)
         pip install -r requirements.txt || echo "No requirements file found"
 
     - name: Install backend dependencies for ar2en-service
@@ -49,10 +48,11 @@ jobs:
       run: |
         pip install -r requirements.txt || echo "No requirements file found"
 
-    - name: Install backend dependencies for the backend Node.js app
-      working-directory: backend
+    # Install backend dependencies for user-service
+    - name: Install backend dependencies for user-service
+      working-directory: backend/user-service/user-service
       run: |
-        npm install
+        npm install  # Assumes there is a package.json file in this directory
 
     # Start the backend services
     - name: Start en2ar-service
@@ -67,8 +67,8 @@ jobs:
       working-directory: api/summarizer-agent
       run: nohup python main.py &
 
-    - name: Start backend Node.js app
-      working-directory: backend
+    - name: Start user-service
+      working-directory: backend/user-service/user-service
       run: nohup npx nodemon index.js &
 
     # Start the frontend application
