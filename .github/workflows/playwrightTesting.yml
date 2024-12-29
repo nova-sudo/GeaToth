@@ -15,9 +15,9 @@ jobs:
         node-version: lts/*
     - name: Navigate to frontend directory
       run: |
-        cd GeaToth/frontend && ls -la # Adjust path to correct directory name
+        cd frontend && ls -la # Adjust path to correct directory name
     - name: Install dependencies
-      working-directory: GeaToth/frontend
+      working-directory: frontend
       run: |
         if [ -f package-lock.json ]; then
           npm ci
