@@ -4,30 +4,38 @@ const connectDB = require("./config/dbConfig");
 const authRoutes = require("./routes/authRoutes");
 const supertokens = require("./config/supertokensConfig");
 const { middleware, errorHandler } = require("supertokens-node/framework/express");
+const cors = require("cors");
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
 
-// SuperTokens middleware (يجب إضافته قبل المسارات)
+// Enable CORS
+app.use(cors({
+    origin: "http://localhost:3000", // Frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    credentials: true, // Allow cookies if necessary
+}));
+
+// SuperTokens middleware (should be added before routes)
 app.use(middleware());
 
 // Middleware for processing JSON
 app.use(bodyParser.json());
 
-// Routes
-app.use("/auth", authRoutes); // Link routes
-
-// SuperTokens error handler (ضعه بعد المسارات)
-app.use(errorHandler());
-
-// Request logger
+// Request logger (Optional, logs requests for debugging)
 app.use((req, res, next) => {
     console.log("Request Method:", req.method);
     console.log("Request URL:", req.url);
     next();
 });
+
+// Routes
+app.use("/auth", authRoutes); // Link routes
+
+// SuperTokens error handler (must be placed after routes)
+app.use(errorHandler());
 
 // Start the server
 app.listen(3030, () => {
