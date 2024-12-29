@@ -25,14 +25,14 @@ jobs:
           npm install
         fi
     - name: Install Playwright Browsers
-      working-directory: GeaToth/frontend
+      working-directory: frontend
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      working-directory: GeaToth/frontend
+      working-directory: frontend
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
-        path: GeaToth/frontend/playwright-report/
+        path: frontend/playwright-report/
         retention-days: 30
