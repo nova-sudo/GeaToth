@@ -38,6 +38,6 @@ app.use("/auth", authRoutes); // Link routes
 app.use(errorHandler());
 
 // Start the server
-app.listen(3000, () => {
+app.listen(3030, () => {
     console.log("User-Service running on http://localhost:3030");
 });

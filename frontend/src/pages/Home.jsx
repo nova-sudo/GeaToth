@@ -11,7 +11,7 @@ export default function Home() {
         className="cursor-pointer ring-2 ring-inset ring-gray-400 text-gray-400 hover:ring-black hover:text-black w-full bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition-shadow"
         onClick={() => (window.location.href = '/translate')}
       >
-        <h2 className="text-9xl font-semibold mb-2 font-pixel">Translate</h2>
+        <h2 className="text-9xl font-semibold mb-2 font-pixel" data-testid="home">Translate</h2>
        
       </div>
 
